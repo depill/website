@@ -1,0 +1,91 @@
+---
+import "../styles/global.css";
+import { site } from "../site";
+interface Props {
+  title?: string;
+  description?: string;
+  article?: boolean;
+  noindex?: boolean;
+}
+const {
+  title,
+  description = site.description,
+  article = false,
+  noindex = false,
+} = Astro.props;
+const pageTitle = title ? `${title} · depill` : "depill · Notes from the work";
+const path = Astro.url.pathname;
+const nav = [
+  { href: "/writing/", label: "Writing" },
+  { href: "/docs/", label: "Documentation" },
+  { href: "/about/", label: "About" },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={site.author} />
+    <meta name="publisher" content={site.company} />
+    <meta name="theme-color" content="#17242c" />
+    <link rel="canonical" href={new URL(path, site.url)} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="depill — Writing"
+      href="/rss.xml"
+    />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={article ? "article" : "website"} />
+    <meta property="og:url" content={new URL(path, site.url)} />
+    <meta property="og:site_name" content="depill" />
+    {noindex && <meta name="robots" content="noindex" />}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">
+      Skip to content
+    </a>
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="wordmark" href="/" aria-label="depill home">
+          depill<span aria-hidden="true">.</span>
+        </a>
+        <nav aria-label="Main navigation">
+          {nav.map(({ href, label }) => (
+            <a
+              href={href}
+              aria-current={path.startsWith(href) ? "page" : undefined}
+            >
+              {label}
+            </a>
+          ))}
+        </nav>
+      </header>
+      <main id="main">
+        <slot />
+      </main>
+      <footer class="site-footer">
+        <div>
+          <a class="footer-brand" href="/">
+            depill.
+          </a>
+          <p>depill.is is operated by {site.company}.</p>
+        </div>
+        <div class="footer-details">
+          <span>
+            {site.company} · kt. {site.registration}
+          </span>
+          <a href="/rss.xml">
+            RSS feed <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

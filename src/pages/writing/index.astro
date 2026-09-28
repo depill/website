@@ -1,0 +1,24 @@
+---
+import Base from "../../layouts/Base.astro";
+import EntryList from "../../components/EntryList.astro";
+import { publishedWriting } from "../../lib/content";
+const entries = await publishedWriting();
+---
+
+<Base
+  title="Writing"
+  description="Field notes and articles on AI development, Business Central, and enterprise processes."
+>
+  <header class="page-heading">
+    <span class="eyebrow">Posts & articles</span>
+    <h1>
+      Writing<span class="accent">.</span>
+    </h1>
+    <p>Ideas, experiments, and things worth writing down.</p>
+  </header>
+  {entries.length ? (
+    <EntryList entries={entries} />
+  ) : (
+    <p class="empty-state">First notes coming soon.</p>
+  )}
+</Base>

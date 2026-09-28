@@ -1,0 +1,37 @@
+---
+import Base from "../../layouts/Base.astro";
+import { publishedDocs, entryUrl } from "../../lib/content";
+const docs = await publishedDocs();
+const sections = [...new Set(docs.map((doc) => doc.data.section))];
+---
+
+<Base
+  title="Documentation"
+  description="Working guides, process maps, and technical notes from the depill notebook."
+>
+  <header class="page-heading">
+    <span class="eyebrow">The working notebook</span>
+    <h1>
+      Documentation<span class="accent">.</span>
+    </h1>
+    <p>Space for the steps, examples, and details worth keeping.</p>
+  </header>
+  {sections.map((section) => (
+    <section class="docs-group">
+      <h2>{section}</h2>
+      {docs
+        .filter((doc) => doc.data.section === section)
+        .map((doc) => (
+          <article class="doc-index-item">
+            <a href={entryUrl(doc)}>
+              {doc.data.title} <span aria-hidden="true">↗</span>
+            </a>
+            <p>{doc.data.description}</p>
+          </article>
+        ))}
+    </section>
+  ))}
+  {!docs.length && (
+    <p class="empty-state">The notebook is open. Guides coming soon.</p>
+  )}
+</Base>

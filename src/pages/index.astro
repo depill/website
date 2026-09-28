@@ -1,0 +1,69 @@
+---
+import Base from "../layouts/Base.astro";
+import EntryList from "../components/EntryList.astro";
+import { publishedWriting, publishedDocs, entryUrl } from "../lib/content";
+const entries = await publishedWriting();
+const docs = await publishedDocs();
+---
+
+<Base>
+  <section class="hero">
+    <div class="eyebrow">
+      <span class="small-dot" aria-hidden="true"></span> AI · Business Central ·
+      Process mapping
+    </div>
+    <h1>
+      Notes from
+      <br />
+      the work<span class="accent">.</span>
+    </h1>
+    <div class="hero-bottom">
+      <p>
+        Side missions in AI and software, and a place to share how business
+        processes actually work.
+      </p>
+      <div class="byline">
+        <strong>David Fannar Gunnarsson</strong>
+        <span>
+          Published by <a href="/about/">Supergut ehf</a>
+        </span>
+      </div>
+    </div>
+  </section>
+  <section class="writing-section" aria-labelledby="latest-heading">
+    <div class="section-heading">
+      <h2 id="latest-heading">Latest writing</h2>
+      <a href="/writing/">
+        All writing <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+    {entries.length ? (
+      <EntryList entries={entries.slice(0, 5)} />
+    ) : (
+      <p class="empty-state">The notebook is open. First notes coming soon.</p>
+    )}
+  </section>
+  <section class="notebook-section" aria-labelledby="notebook-heading">
+    <div>
+      <span class="eyebrow">The working notebook</span>
+      <h2 id="notebook-heading">Room for the details.</h2>
+      <p>
+        Longer guides, process maps, and the practical details that deserve more
+        than a blog post.
+      </p>
+      <a class="text-link" href="/docs/">
+        Explore documentation <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+    <div class="notebook-links">
+      {docs.slice(0, 3).map((doc) => (
+        <a href={entryUrl(doc)}>
+          <span class="eyebrow">{doc.data.section}</span>
+          <strong>{doc.data.title}</strong>
+          <span aria-hidden="true">↗</span>
+        </a>
+      ))}
+      {!docs.length && <p>Documentation will grow alongside the work.</p>}
+    </div>
+  </section>
+</Base>

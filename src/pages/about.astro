@@ -1,0 +1,85 @@
+---
+import Base from "../layouts/Base.astro";
+import { site } from "../site";
+---
+
+<Base
+  title="About"
+  description="David Fannar Gunnarsson’s side projects, experiments, and technical notes. Depill.is is operated by Supergut ehf, kennitala 430524-2160."
+>
+  <div class="about-layout">
+    <div>
+      <header class="page-heading">
+        <span class="eyebrow">Supergut ehf</span>
+        <h1>
+          About depill<span class="accent">.</span>
+        </h1>
+        <p>
+          A personal notebook for side projects, experiments, and things worth
+          sharing.
+        </p>
+      </header>
+      <div class="prose">
+        <p>
+          I’m David Fannar Gunnarsson. I work for Globus Group and am based in
+          Iceland. Supergut ehf is where I work on my side missions.
+        </p>
+        <h2>What I’m exploring</h2>
+        <p>
+          Depill is a space for my own side projects and interests: AI
+          development, intelligent automation, Business Central, and process
+          mapping. It’s where I can write things down as I explore them.
+        </p>
+        <p>
+          I’m interested in how software fits into real businesses, from
+          telecommunications and manufacturing to wholesale—and in the small
+          experiments that help make sense of it all.
+        </p>
+        <h2>Tools to share</h2>
+        <p>
+          I’m planning to share a free point-of-sale application here, and
+          perhaps a picking application too. Useful tools, along with notes on
+          how they work and the processes around them.
+        </p>
+        <h2>Processes worth sharing</h2>
+        <p>
+          I often find that useful knowledge about business processes is locked
+          behind a wall. I want to share more of it openly: how a process works,
+          why it works that way, and what could be better.
+        </p>
+        <p>
+          Sometimes that’s a short post. Sometimes it needs a process map, a
+          practical example, or a full set of documentation.
+        </p>
+        <p>
+          You can find new posts in <a href="/writing/">Writing</a> and longer
+          guides in <a href="/docs/">Documentation</a>.
+        </p>
+        <h2>Supergut ehf</h2>
+        <p>
+          Supergut ehf develops business software, integrations and automation
+          solutions, with a focus on Microsoft Dynamics 365 Business Central.
+        </p>
+        <p>
+          Depill.is is owned and operated by Supergut ehf, my Icelandic company,
+          registered under kennitala 430524-2160. Depill.is is the company’s
+          public-facing brand and website for sharing projects, technical writing
+          and documentation.
+        </p>
+      </div>
+    </div>
+    <aside class="company-card">
+      <span class="eyebrow">Company details</span>
+      <dl>
+        <dt>Legal company name</dt>
+        <dd>{site.company}</dd>
+        <dt>Kennitala</dt>
+        <dd>{site.registration}</dd>
+        <dt>Name</dt>
+        <dd>{site.author}</dd>
+        <dt>Website</dt>
+        <dd>depill.is</dd>
+      </dl>
+    </aside>
+  </div>
+</Base>
