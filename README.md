@@ -65,7 +65,7 @@ npx wrangler login
 npm run deploy
 ```
 
-`npm run deploy` checks the project, builds it, and uploads `dist/`. The custom domain in `wrangler.jsonc` connects the Worker to `depill.is`. If Cloudflare reports an existing conflicting DNS record, review the existing record in your account before changing it. This project does not configure `www.depill.is`; add a separate domain or redirect if you want that address too.
+`npm run deploy` checks the project, builds it, and uploads `dist/`. The custom domains in `wrangler.jsonc` connect the Worker to both `depill.is` and `www.depill.is`. Both serve the same site, with canonical URLs pointing to `https://depill.is`. If Cloudflare reports an existing conflicting DNS record, review the existing record in your account before changing it.
 
 To deploy to a `workers.dev` address first, remove the `routes` array from `wrangler.jsonc` and add `"workers_dev": true`. Restore the route when you are ready to connect `depill.is`.
 
