@@ -6,12 +6,14 @@ interface Props {
   description?: string;
   article?: boolean;
   noindex?: boolean;
+  lang?: "en" | "is";
 }
 const {
   title,
   description = site.description,
   article = false,
   noindex = false,
+  lang = "en",
 } = Astro.props;
 const pageTitle = title ? `${title} · depill` : "depill · Notes from the work";
 const path = Astro.url.pathname;
@@ -23,7 +25,7 @@ const nav = [
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -81,6 +83,12 @@ const nav = [
           <span>
             {site.company} · kt. {site.registration}
           </span>
+          <a href={`/pos/privacy/${lang}/`}>
+            {lang === "is" ? "Persónuvernd POS" : "POS privacy"}
+          </a>
+          <a href={`/pos/support/${lang}/`}>
+            {lang === "is" ? "Aðstoð við POS" : "POS support"}
+          </a>
           <a href="/rss.xml">
             RSS feed <span aria-hidden="true">↗</span>
           </a>

@@ -1,0 +1,435 @@
+---
+import Base from "../../../layouts/Base.astro";
+
+export function getStaticPaths() {
+  return ["privacy", "support"].flatMap((kind) =>
+    ["en", "is"].map((lang) => ({ params: { kind, lang } })),
+  );
+}
+const is = Astro.params.lang === "is";
+const privacy = Astro.params.kind === "privacy";
+const lang = is ? "is" : "en";
+const title = privacy
+  ? is
+    ? "Persónuverndarstefna — Supergut POS"
+    : "Privacy notice — Supergut POS"
+  : is
+    ? "Aðstoð við Supergut POS"
+    : "Supergut POS support";
+const description = privacy
+  ? is
+    ? "Upplýsingar um vinnslu persónuupplýsinga, varðveislu og réttindi í Supergut POS."
+    : "How Supergut POS handles personal information, retention and your privacy rights."
+  : is
+    ? "Hafðu samband við Supergut vegna uppsetningar, sölu, endurgreiðslna og kvittana."
+    : "Contact Supergut for help with setup, sales, refunds and receipts.";
+---
+
+<Base title={title} description={description} lang={lang}>
+  <article class="legal-page">
+    <header class="page-heading">
+      <span class="eyebrow">Supergut POS</span>
+      <h1>{title}</h1>
+      <p>{description}</p>
+      <nav aria-label={is ? "Tungumál" : "Language"}>
+        <a
+          href={`/pos/${Astro.params.kind}/is/`}
+          lang="is"
+          hreflang="is"
+          aria-current={is ? "page" : undefined}
+        >
+          Íslenska
+        </a>
+        <a
+          href={`/pos/${Astro.params.kind}/en/`}
+          lang="en"
+          hreflang="en"
+          aria-current={!is ? "page" : undefined}
+        >
+          English
+        </a>
+      </nav>
+    </header>
+    <div class="prose">
+      {privacy ? (
+        is ? (
+          <>
+            <p>
+              <strong>Gildir frá 5. október 2026.</strong>
+            </p>
+            <p>
+              Supergut POS er ókeypis afgreiðsluforrit frá Supergut ehf., kt.
+              430524-2160. Stefnan lýsir vinnslu persónuupplýsinga í tengslum
+              við forritið og þjónustu okkar.
+            </p>
+            <h2>Ábyrgð á upplýsingum</h2>
+            <p>
+              Söluaðilinn sem notar Supergut POS ber ábyrgð á viðskiptavina- og
+              sölugögnum sínum og ákveður hvernig þau eru notuð í rekstri hans.
+              Þegar Supergut hýsir og vinnur með þessi gögn fyrir söluaðilann
+              fer vinnslan fram samkvæmt fyrirmælum hans. Supergut ber ábyrgð á
+              eigin vinnslu vegna samskipta, aðstoðar og umsýslu þjónustunnar.
+              Greiðsluþjónustuveitendur bera ábyrgð á sinni vinnslu samkvæmt
+              viðeigandi skilmálum og persónuverndarstefnum.
+            </p>
+            <h2>Upplýsingar sem unnið er með</h2>
+            <p>
+              Eftir því hvaða eiginleikar eru notaðir og hvernig kerfi
+              söluaðilans er stillt er unnið með nöfn, netföng, símanúmer,
+              viðskiptavinanúmer og kennitölur; upplýsingar um sölu, skil,
+              kvittanir, inneign og greiðslutilvísanir; og auðkenni tækja,
+              aðgangs og starfsfólks sem tengjast versluninni. Upplýsingar geta
+              komið frá söluaðilanum, starfsfólki hans, viðskiptavinum eða
+              tengdum rekstrarkerfum.
+            </p>
+            <p>
+              Við sendingu kvittunar í tölvupósti er netfang viðtakanda notað
+              til að afhenda kvittunina. Aðstoðarbeiðnir innihalda þær
+              samskiptaupplýsingar og upplýsingar um málið sem þú sendir okkur.
+              Tæknilegar upplýsingar sem tengjast rekstri þjónustunnar geta
+              meðal annars verið tengiupplýsingar, staða aðgangs og færslna og
+              villuupplýsingar.
+            </p>
+            <h2>Tilgangur og vinnsluheimildir</h2>
+            <p>
+              Gögn eru notuð til að reka afgreiðslukerfið, auðkenna aðgang,
+              vinna úr sölu og endurgreiðslum, afhenda kvittanir, samstilla
+              tengd rekstrarkerfi og veita aðstoð. Söluaðilinn ákvarðar
+              vinnsluheimildir vegna viðskiptavinagagna sinna. Eigin vinnsla
+              Supergut vegna þjónustu og samskipta byggist á efndum samnings
+              þegar þú ert samningsaðili eða lögmætum hagsmunum af því að veita
+              aðstoð, annast viðskiptasambönd og tryggja öryggi og áreiðanleika
+              þjónustunnar. Upplýsingar eru einnig unnar þegar það er
+              nauðsynlegt til að uppfylla lagaskyldu.
+            </p>
+            <h2>Hýsing og þjónustuveitendur</h2>
+            <p>
+              Bakendi Supergut POS er hýstur á sýndarþjóni (VPS) hjá Hetzner.
+              Upplýsingar fara til þeirra þjónustuveitenda sem þarf til að veita
+              þá þjónustu sem er notuð, svo sem hýsingar, tölvupóstþjónustu
+              fyrir kvittanir og tengdra bókhalds- og greiðslukerfa. Til dæmis
+              getur söluaðili tengt Microsoft Dynamics 365 Business Central við
+              kerfið.
+            </p>
+            <p>
+              Þegar Teya er notað er upplýsingum um greiðslur, færslutilvísanir
+              og tengd tæki miðlað til og frá Teya vegna greiðslna,
+              endurgreiðslna og afstemmingar. Bakendinn getur varðveitt
+              færslutilvísanir og kortalýsigögn sem greiðsluþjónustan skilar,
+              svo sem síðustu tölustafi kortanúmers og kortategund. Sjá{" "}
+              <a href="https://www.teya.com/legal/privacy-policy">
+                persónuverndarstefnu Teya
+              </a>
+              . Aðrar greiðsluþjónustur, svo sem Netgíró, taka við nauðsynlegum
+              upplýsingum þegar söluaðilinn hefur virkjað þær og þær eru
+              notaðar.
+            </p>
+            <p>
+              Hafðu samband við okkur til að fá upplýsingar um þjónustuveitendur
+              og vinnslustaði fyrir þína uppsetningu. Ef persónuupplýsingar eru
+              fluttar út fyrir Evrópska efnahagssvæðið þarf flutningurinn að
+              byggjast á viðeigandi heimild og verndarráðstöfunum samkvæmt
+              gildandi persónuverndarreglum.
+            </p>
+            <h2>Myndavél og heimildir</h2>
+            <p>
+              Myndavélin er notuð með þínu leyfi til að lesa tengikóða og
+              strikamerki. Skannaðir kóðar eru notaðir til að tengja tækið eða
+              fletta upp vörum og kvittunum. Þú getur afturkallað
+              myndavélarheimild í stillingum iPad; þá er ekki hægt að skanna með
+              myndavélinni.
+            </p>
+            <h2>Varðveisla og eyðing</h2>
+            <p>
+              POS-gögn eru varðveitt til lengri tíma í bakendanum til að styðja
+              við rekstur söluaðilans, færslusögu og uppgjör. Varðveislutími er
+              stillanlegur af söluaðilanum og gögn eru eydd samkvæmt beiðni
+              hans, að teknu tilliti til gildandi lagaskyldna. Enginn einn
+              fastur varðveislutími gildir því fyrir allar uppsetningar.
+            </p>
+            <p>
+              Söluaðilinn þarf að velja varðveislu sem samræmist tilgangi
+              vinnslunnar og lagaskyldum hans. Hafðu samband við
+              depill@depill.is vegna beiðni um eyðingu, breytingu á varðveislu
+              eða upplýsinga um umfang eyðingar, þar á meðal öryggisafrit.
+              Fjarlæging forritsins af iPad eyðir ekki gögnum í bakendanum.
+            </p>
+            <p>
+              Samskipti vegna aðstoðar eru varðveitt eins lengi og þörf er á til
+              að afgreiða erindið og sinna tengdri eftirfylgni eða lagalegum
+              skyldum. Upplýst verður um það ef ekki er hægt að eyða tilteknum
+              gögnum vegna varðveisluskyldu.
+            </p>
+            <h2>Réttindi þín</h2>
+            <p>
+              Að uppfylltum viðeigandi skilyrðum getur þú óskað eftir aðgangi að
+              persónuupplýsingum, leiðréttingu, eyðingu, takmörkun vinnslu eða
+              flutningi gagna og andmælt vinnslu sem byggist á lögmætum
+              hagsmunum. Ef vinnsla byggist á samþykki getur þú afturkallað það
+              án þess að það hafi áhrif á lögmæti fyrri vinnslu.
+            </p>
+            <p>
+              Hafðu samband við{" "}
+              <a href="mailto:depill@depill.is">depill@depill.is</a>. Vegna
+              kaupa eða viðskiptavinaskrár skaltu fyrst hafa samband við
+              viðkomandi söluaðila; við getum aðstoðað við að beina erindinu
+              rétt. Við kunnum að þurfa að staðfesta auðkenni þitt og heimild
+              til að óska eftir aðgerð. Þú getur lagt fram kvörtun hjá{" "}
+              <a href="https://www.personuvernd.is/">Persónuvernd</a>.
+            </p>
+            <h2>Breytingar á stefnunni</h2>
+            <p>
+              Breytingar verða birtar á þessari síðu og gildisdagsetning
+              uppfærð.
+            </p>
+          </>
+        ) : (
+          <>
+            <p>
+              <strong>Effective 5 October 2026.</strong>
+            </p>
+            <p>
+              Supergut POS is a free point-of-sale app provided by Supergut ehf,
+              Icelandic registration number 430524-2160. This notice describes
+              the handling of personal information in connection with the app
+              and our service.
+            </p>
+            <h2>Responsibility for your information</h2>
+            <p>
+              The merchant using Supergut POS is responsible for its customer
+              and sales records and determines how they are used in its
+              business. When Supergut hosts and processes those records for the
+              merchant, it acts on the merchant’s instructions. Supergut is
+              responsible for its own processing for communications, support and
+              service administration. Payment providers are responsible for
+              their processing under their applicable terms and privacy notices.
+            </p>
+            <h2>Information we process</h2>
+            <p>
+              Depending on the features used and the merchant’s configuration,
+              the service processes names, email addresses, phone numbers,
+              customer numbers and Icelandic identification numbers; sales,
+              returns, receipts, store credit and payment references; and
+              device, account and staff identifiers associated with the shop.
+              Information may come from the merchant, its staff, customers or
+              connected business systems.
+            </p>
+            <p>
+              When a receipt is sent by email, the recipient address is used to
+              deliver it. Support requests contain the contact details and
+              information about the issue that you send us. Technical
+              information associated with operating the service may include
+              connection information, access and transaction status, and error
+              details.
+            </p>
+            <h2>Purposes and legal grounds</h2>
+            <p>
+              Information is used to operate the till, authenticate access,
+              process sales and refunds, deliver receipts, synchronise connected
+              business systems and provide support. The merchant determines the
+              legal grounds for processing its customer records. Supergut’s own
+              processing for service administration and communications relies on
+              performing a contract where you are a party to it, or on
+              legitimate interests in providing support, managing business
+              relationships and maintaining a secure and reliable service.
+              Information is also processed where necessary to meet legal
+              obligations.
+            </p>
+            <h2>Hosting and service providers</h2>
+            <p>
+              The Supergut POS backend is hosted on a Hetzner virtual private
+              server (VPS). Information is shared with providers needed to
+              deliver the features being used, such as hosting, email delivery
+              for receipts, and connected accounting and payment services. For
+              example, a merchant may connect Microsoft Dynamics 365 Business
+              Central.
+            </p>
+            <p>
+              When Teya is used, payment information, transaction references and
+              associated device information are exchanged with Teya for
+              payments, refunds and reconciliation. The backend may retain
+              transaction references and card metadata returned by the payment
+              provider, such as the last digits of a card number and card brand.
+              See{" "}
+              <a href="https://www.teya.com/legal/privacy-policy">
+                Teya’s privacy notice
+              </a>
+              . Other payment services, such as Netgíró, receive necessary
+              information when enabled by the merchant and used.
+            </p>
+            <p>
+              Contact us for details of service providers and processing
+              locations for your installation. Any transfer of personal
+              information outside the European Economic Area must rely on an
+              appropriate legal basis and safeguards under applicable data
+              protection rules.
+            </p>
+            <h2>Camera and permissions</h2>
+            <p>
+              The camera is used with your permission to read pairing codes and
+              barcodes. Scanned codes are used to connect the device or look up
+              products and receipts. You can revoke camera access in iPad
+              settings; camera scanning will then be unavailable.
+            </p>
+            <h2>Retention and deletion</h2>
+            <p>
+              POS records are retained long term in the backend to support the
+              merchant’s operations, transaction history and reconciliation.
+              Retention is configurable by the merchant, and records are deleted
+              at its request, subject to applicable legal obligations. There is
+              therefore no single fixed retention period for every installation.
+            </p>
+            <p>
+              The merchant must choose retention appropriate to the purpose of
+              processing and its legal obligations. Contact depill@depill.is to
+              request deletion, change retention or obtain details of the scope
+              of deletion, including backups. Removing the app from an iPad does
+              not delete backend records.
+            </p>
+            <p>
+              Support correspondence is kept for as long as needed to resolve
+              the request and handle related follow-up or legal obligations. We
+              will explain if particular information cannot be deleted because
+              it must be retained by law.
+            </p>
+            <h2>Your rights</h2>
+            <p>
+              Subject to the applicable conditions, you may request access,
+              correction, deletion, restriction or portability of your personal
+              information, and object to processing based on legitimate
+              interests. If processing relies on consent, you may withdraw it
+              without affecting the lawfulness of earlier processing.
+            </p>
+            <p>
+              Contact <a href="mailto:depill@depill.is">depill@depill.is</a>.
+              For a purchase or customer record, contact the relevant merchant
+              first; we can help direct your request. We may need to verify your
+              identity and authority to request an action. You can complain to
+              the Icelandic Data Protection Authority,{" "}
+              <a href="https://www.personuvernd.is/">Persónuvernd</a>.
+            </p>
+            <h2>Changes to this notice</h2>
+            <p>
+              Changes will be published on this page and the effective date
+              updated.
+            </p>
+          </>
+        )
+      ) : is ? (
+        <>
+          <p>
+            Supergut POS er ókeypis afgreiðsluforrit fyrir iPad frá Supergut
+            ehf., kt. 430524-2160.
+          </p>
+          <h2>Hvernig getum við aðstoðað?</h2>
+          <p>
+            Sendu tölvupóst á{" "}
+            <a href="mailto:depill@depill.is">depill@depill.is</a> eða hringdu í{" "}
+            <a href="tel:+3548229923">+354 822 9923</a> vegna uppsetningar,
+            tengingar tækis, sölu, endurgreiðslna eða kvittana.
+          </p>
+          <p>
+            Tilgreindu útgáfu forritsins, útgáfu iPadOS, lýsingu á vandamálinu
+            og færslutilvísun ef við á. Ekki senda lykilorð, tengikóða, heil
+            kortanúmer eða persónuupplýsingar viðskiptavina sem ekki eru
+            nauðsynlegar til að skoða málið.
+          </p>
+          <h2>Kaup, endurgreiðslur og greiðsluposar</h2>
+          <p>
+            Hafðu samband við verslunina þar sem þú verslaðir vegna spurninga um
+            kaup eða endurgreiðslu. Vegna bilunar í greiðsluposa skaltu fylgja
+            þjónustufyrirkomulagi þínu hjá Teya eða viðkomandi
+            greiðsluþjónustuveitanda.
+          </p>
+          <h2>Ókeypis forrit</h2>
+          <p>
+            Ókeypis er að sækja forritið. Greiðslumiðlun og tengd þjónusta
+            þriðju aðila geta krafist sérstakra samninga og gjalda.
+          </p>
+          <h2>Persónuvernd og eyðing gagna</h2>
+          <p>
+            Sendu beiðnir um persónuupplýsingar, varðveislu eða eyðingu gagna á{" "}
+            <a href="mailto:depill@depill.is">depill@depill.is</a>. Sjá{" "}
+            <a href="/pos/privacy/is/">persónuverndarstefnu Supergut POS</a>.
+          </p>
+        </>
+      ) : (
+        <>
+          <p>
+            Supergut POS is a free point-of-sale app for iPad, provided by
+            Supergut ehf, registration number 430524-2160.
+          </p>
+          <h2>How can we help?</h2>
+          <p>
+            Email <a href="mailto:depill@depill.is">depill@depill.is</a> or call{" "}
+            <a href="tel:+3548229923">+354 822 9923</a> for help with setup,
+            device pairing, sales, refunds or receipts.
+          </p>
+          <p>
+            Include the app version, iPadOS version, a description of the issue
+            and a transaction reference where relevant. Do not send passwords,
+            pairing codes, full card numbers or customer information that is not
+            needed to investigate the issue.
+          </p>
+          <h2>Purchases, refunds and payment terminals</h2>
+          <p>
+            For questions about a purchase or refund, contact the shop where you
+            made the purchase. For a payment-terminal issue, follow your
+            merchant support arrangement with Teya or the relevant payment
+            provider.
+          </p>
+          <h2>Free app</h2>
+          <p>
+            The app is free to download. Payment processing and connected
+            third-party services may require separate agreements and fees.
+          </p>
+          <h2>Privacy and data deletion</h2>
+          <p>
+            Send requests about personal information, retention or data deletion
+            to <a href="mailto:depill@depill.is">depill@depill.is</a>. See the{" "}
+            <a href="/pos/privacy/en/">Supergut POS privacy notice</a>.
+          </p>
+        </>
+      )}
+      <h2>{is ? "Samskiptaupplýsingar" : "Contact details"}</h2>
+      <address>
+        Supergut ehf · {is ? "kt." : "registration no."} 430524-2160
+        <br />
+        Laxalind 19, 201 Kópavogur, {is ? "Ísland" : "Iceland"}
+        <br />
+        <a href="mailto:depill@depill.is">depill@depill.is</a>
+        <br />
+        <a href="tel:+3548229923">+354 822 9923</a>
+      </address>
+      <p>
+        <a href={`/pos/${privacy ? "support" : "privacy"}/${lang}/`}>
+          {privacy
+            ? is
+              ? "Aðstoð við Supergut POS"
+              : "Supergut POS support"
+            : is
+              ? "Persónuverndarstefna"
+              : "Privacy notice"}
+        </a>
+      </p>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .legal-page {
+    max-width: 780px;
+    margin-inline: auto;
+    padding-bottom: 56px;
+  }
+  .page-heading nav {
+    margin-top: 24px;
+  }
+  address {
+    font-style: normal;
+    line-height: 1.8;
+  }
+  .prose {
+    overflow-wrap: anywhere;
+  }
+</style>
