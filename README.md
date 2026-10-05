@@ -108,6 +108,8 @@ This project has not been deployed by its initial setup. Real domain routing and
 
 ## Change the site
 
+The colour palette, icon sources and usage guidance are saved in [docs/brand.md](docs/brand.md).
+
 - Identity and comment settings: `src/site.ts`
 - Home page: `src/pages/index.astro`
 - About page: `src/pages/about.astro`
