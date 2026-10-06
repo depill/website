@@ -17,10 +17,16 @@ const {
 } = Astro.props;
 const pageTitle = title ? `${title} · depill` : "depill · Notes from the work";
 const path = Astro.url.pathname;
+const is = lang === "is";
 const nav = [
-  { href: "/writing/", label: "Writing" },
-  { href: "/docs/", label: "Documentation" },
-  { href: "/about/", label: "About" },
+  { href: "/pos/", label: "POS", icon: "sales" },
+  { href: "/writing/", label: is ? "Greinar" : "Writing", icon: "edit" },
+  {
+    href: "/docs/",
+    label: is ? "Leiðbeiningar" : "Documentation",
+    icon: "notes",
+  },
+  { href: "/about/", label: is ? "Um depill" : "About", icon: "info" },
 ];
 ---
 
@@ -33,7 +39,7 @@ const nav = [
     <meta name="description" content={description} />
     <meta name="author" content={site.author} />
     <meta name="publisher" content={site.company} />
-    <meta name="theme-color" content="#17242c" />
+    <meta name="theme-color" content="#78EBC2" />
     <link rel="canonical" href={new URL(path, site.url)} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link
@@ -51,19 +57,39 @@ const nav = [
   </head>
   <body>
     <a class="skip-link" href="#main">
-      Skip to content
+      {is ? "Fara í efni" : "Skip to content"}
     </a>
     <div class="site-shell">
       <header class="site-header">
-        <a class="wordmark" href="/" aria-label="depill home">
-          depill<span aria-hidden="true">.</span>
+        <a
+          class="wordmark"
+          href="/"
+          aria-label={is ? "depill forsíða" : "depill home"}
+        >
+          <img
+            class="brand-icon"
+            src="/icons/brand/supergut-app-mint-rounded.svg"
+            width="44"
+            height="44"
+            alt=""
+          />
+          <span class="wordmark-text">
+            depill<span aria-hidden="true">.</span>
+          </span>
         </a>
-        <nav aria-label="Main navigation">
-          {nav.map(({ href, label }) => (
+        <nav aria-label={is ? "Aðalvalmynd" : "Main navigation"}>
+          {nav.map(({ href, label, icon }) => (
             <a
               href={href}
               aria-current={path.startsWith(href) ? "page" : undefined}
             >
+              <img
+                class="ui-icon"
+                src={`/icons/ui/${icon}.svg`}
+                width="20"
+                height="20"
+                alt=""
+              />
               {label}
             </a>
           ))}
@@ -77,20 +103,24 @@ const nav = [
           <a class="footer-brand" href="/">
             depill.
           </a>
-          <p>depill.is is operated by {site.company}.</p>
+          <p>
+            {is
+              ? `depill.is er rekið af ${site.company}.`
+              : `depill.is is operated by ${site.company}.`}
+          </p>
         </div>
         <div class="footer-details">
           <span>
             {site.company} · kt. {site.registration}
           </span>
           <a href={`/pos/privacy/${lang}/`}>
-            {lang === "is" ? "Persónuvernd POS" : "POS privacy"}
+            {is ? "Persónuvernd POS" : "POS privacy"}
           </a>
           <a href={`/pos/support/${lang}/`}>
-            {lang === "is" ? "Aðstoð við POS" : "POS support"}
+            {is ? "Aðstoð við POS" : "POS support"}
           </a>
           <a href="/rss.xml">
-            RSS feed <span aria-hidden="true">↗</span>
+            {is ? "RSS-straumur" : "RSS feed"} <span aria-hidden="true">↗</span>
           </a>
         </div>
       </footer>

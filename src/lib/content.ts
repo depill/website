@@ -21,8 +21,8 @@ export const publishedDocs = async () =>
 export const entryUrl = (
   entry: CollectionEntry<"writing"> | CollectionEntry<"docs">,
 ) => `/${entry.collection}/${entry.id}/`;
-export const formatDate = (date: Date) =>
-  new Intl.DateTimeFormat("en-GB", {
+export const formatDate = (date: Date, lang: "en" | "is" = "en") =>
+  new Intl.DateTimeFormat(lang === "is" ? "is-IS" : "en-GB", {
     day: "numeric",
     month: "short",
     year: "numeric",

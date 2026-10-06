@@ -2,6 +2,7 @@
 import type { MarkdownHeading } from "astro";
 interface Props {
   headings: MarkdownHeading[];
+  label?: string;
 }
 const headings = Astro.props.headings.filter(
   (h) => h.depth === 2 || h.depth === 3,
@@ -10,7 +11,7 @@ const headings = Astro.props.headings.filter(
 
 {headings.length > 1 && (
   <details class="toc">
-    <summary>On this page</summary>
+    <summary>{Astro.props.label ?? "On this page"}</summary>
     <ul>
       {headings.map((h) => (
         <li class:list={{ subheading: h.depth === 3 }}>

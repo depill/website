@@ -3,6 +3,7 @@ import { z } from "astro/zod";
 import { glob } from "astro/loaders";
 
 const common = {
+  lang: z.enum(["en", "is"]).default("en"),
   title: z.string(),
   description: z.string(),
   date: z.coerce.date(),
