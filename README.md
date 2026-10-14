@@ -104,7 +104,7 @@ This runs the type/content check, generates the static site, and performs a Wran
 npm run preview:worker
 ```
 
-This project has not been deployed by its initial setup. Real domain routing and GitHub comments require your account configuration and a live check after deployment.
+The site is deployed at `https://depill.is`; POS privacy/support publication and dated verification are recorded in [the submission handoff](docs/app-store-submission.md). GitHub comments remain disabled until configured. Every new deployment still needs a fresh public routing/content check.
 
 ## Change the site
 

@@ -35,3 +35,12 @@ are Teya and Netgíró. Other card integrations are not planned and are unlikely
 to be added. Teya Raðgreiðslur support is coming soon, not available yet.
 These statements supersede older repository notes about planned providers;
 they do not establish live payment or hardware acceptance.
+
+## First-release follow-up — 2026-10-14
+
+The lean iPad release is documented in POS [PR #10](https://github.com/depill/pos/pull/10), code `709093c`.
+Current payment/receipt/recovery boundaries supersede implied acceptance or imminent feature promises.
+Teya Raðgreiðslur are outside first-release scope; optional integrations still require merchant-specific
+setup/acceptance. `/pos/en/` provides English product information; existing privacy/support URLs stay stable.
+The public pages are owned by their Astro routes; `docs/app-store-submission.md` owns the publication and
+App Store handoff. Publication does not certify the payment provider or establish App Store availability.

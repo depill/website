@@ -44,6 +44,13 @@ const features = [
       <a class="text-link" href="/docs/pos/fyrstu-skref/">
         Kynnast iPad-forritinu <span aria-hidden="true">↗</span>
       </a>
+      <nav class="pos-links" aria-label="Upplýsingar um forritið">
+        <a href="/pos/support/is/">Aðstoð</a>
+        <a href="/pos/privacy/is/">Persónuvernd</a>
+        <a href="/pos/en/" lang="en" hreflang="en">
+          English
+        </a>
+      </nav>
       <p class="pos-caption">
         Verkefni frá Supergut ehf, fyrirtækinu á bak við depill.is.
       </p>
@@ -87,8 +94,8 @@ const features = [
       <p>
         Eins og staðan er í dag eru eingöngu tengingar við Teya og Netgíró
         studdar. Aðrar greiðslukortatengingar eru ekki á áætlun og verða að
-        öllum líkindum ekki í boði. Stuðningur við Teya Raðgreiðslur er
-        væntanlegur á næstunni.
+        öllum líkindum ekki í boði. Teya Raðgreiðslur eru ekki hluti af fyrstu
+        útgáfu.
       </p>
     </div>
   </section>
@@ -162,6 +169,12 @@ const features = [
     font-size: 1.15rem;
     color: var(--text-secondary);
     max-width: 650px;
+  }
+  .pos-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
   }
   .pos-caption,
   figcaption {

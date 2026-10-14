@@ -2,13 +2,14 @@
 title: "Greiðslur og staða þróunar"
 description: "Munurinn á hermdum greiðslum, tengdum prófunum og lausn sem er tilbúin í rekstur."
 date: 2026-10-05
+updated: 2026-10-14
 lang: is
 section: "Supergut POS"
 order: 3
 comments: false
 ---
 
-Supergut POS er í þróun. Þessi síða lýsir umfangi fyrstu kynningarinnar út frá verkefnisgögnum yfirförnum 5. október 2026. Hún staðfestir ekki framleiðsluuppsetningu eða samþykki frá Apple eða greiðsluþjónustu.
+Supergut POS er í þróun. Þessi síða lýsir umfangi fyrstu kynningarinnar út frá útgáfugögnum yfirförnum 14. október 2026. Hún staðfestir ekki framleiðsluuppsetningu eða samþykki frá Apple eða greiðsluþjónustu.
 
 ## Ókeypis lausn, þróuð með aðstoð gervigreindar
 
@@ -18,7 +19,7 @@ Supergut POS er ókeypis. Ég þróa kerfið fyrir fyrirtæki sem tengist mér o
 
 Eins og staðan er í dag eru eingöngu tengingar við **Teya** og **Netgíró** studdar. Aðrar greiðslukortatengingar eru ekki á áætlun og verða að öllum líkindum ekki í boði.
 
-Stuðningur við **Teya Raðgreiðslur** er væntanlegur á næstunni. Hann er ekki hluti af núverandi stuðningi.
+**Teya Raðgreiðslur** eru ekki hluti af fyrstu útgáfu. Frekari eiginleikar koma síðar.
 
 ## Þrjár ólíkar leiðir til að prófa
 

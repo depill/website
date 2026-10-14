@@ -19,7 +19,7 @@ const pageTitle = title ? `${title} · depill` : "depill · Notes from the work"
 const path = Astro.url.pathname;
 const is = lang === "is";
 const nav = [
-  { href: "/pos/", label: "POS", icon: "sales" },
+  { href: is ? "/pos/" : "/pos/en/", label: "POS", icon: "sales" },
   { href: "/writing/", label: is ? "Greinar" : "Writing", icon: "edit" },
   {
     href: "/docs/",
@@ -81,7 +81,15 @@ const nav = [
           {nav.map(({ href, label, icon }) => (
             <a
               href={href}
-              aria-current={path.startsWith(href) ? "page" : undefined}
+              aria-current={
+                (
+                  href.startsWith("/pos/")
+                    ? path.startsWith("/pos/")
+                    : path.startsWith(href)
+                )
+                  ? "page"
+                  : undefined
+              }
             >
               <img
                 class="ui-icon"
