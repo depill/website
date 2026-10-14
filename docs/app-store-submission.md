@@ -130,7 +130,11 @@ Browser verification confirmed English support/contact and Icelandic support/pri
 language navigation. [Live support screenshot](evidence/2026-10-14-pos-support-en.jpg).
 The 390px privacy check found a clipped Icelandic heading; this follow-up makes the heading smaller
 on narrow screens and permits wrapping. Local browser measurements now show 390px content/viewport,
-with a 32px heading and no horizontal overflow. Final publication is verified again after this follow-up.
+with a 32px heading and no horizontal overflow. Follow-up commit `b30dda5a173f07b018d345bc6d32670736a0a092` and
+[its deployment](https://github.com/depill/website/actions/runs/38585017431) passed. Fresh public
+checks match all five routes to the generated build; the deployed privacy page has no overflow
+at 390px and a 32px heading. Desktop screenshots/DOM verification are website browser evidence,
+not physical iPad or terminal acceptance.
 
 Local validation: zero Astro errors/warnings, build and Wrangler dry-run pass; 16 HTML pages and
 395 generated internal links/assets/anchors pass, including both languages, contact details and sitemap.
