@@ -123,4 +123,22 @@ providers and notify affected users when processing changes. Do not assert unkno
 invent a legal retention schedule. There is no native account-signup flow in the inspected candidate;
 if this changes, an email-only website request does not satisfy Apple's in-app deletion requirement.
 
-Publication and fresh public/browser verification for this update are recorded below after deployment.
+Publication evidence, 14 October 2026: content commit `491b8ab28217d63002c7fca61841fcc1ac759cbb`
+was published to main; [Cloudflare deployment](https://github.com/depill/website/actions/runs/38583568066)
+passed. All four policy/support URLs and the English product URL returned HTTPS 200 without login.
+Browser verification confirmed English support/contact and Icelandic support/privacy content and
+language navigation. [Live support screenshot](evidence/2026-10-14-pos-support-en.jpg).
+The 390px privacy check found a clipped Icelandic heading; this follow-up makes the heading smaller
+on narrow screens and permits wrapping. Local browser measurements now show 390px content/viewport,
+with a 32px heading and no horizontal overflow. Final publication is verified again after this follow-up.
+
+Local validation: zero Astro errors/warnings, build and Wrangler dry-run pass; 16 HTML pages and
+395 generated internal links/assets/anchors pass, including both languages, contact details and sitemap.
+The original website checkout is preserved in place; publishing uses an isolated current-main worktree.
+
+Native public metadata is configured in the POS release candidate's ignored Release.local.plist,
+and its reviewable example contains the actual publisher/URLs. A fresh unsigned archive includes
+all three values and passes structural inspection; public preflight is reduced from six failures
+to three: production Teya configuration, the vendor SDK privacy declaration and Apple distribution
+signing. The pre-pairing privacy/demo Release UI case also passes with the configured metadata.
+Production processor/contract/SDK disclosures and real-environment acceptance above remain open.
